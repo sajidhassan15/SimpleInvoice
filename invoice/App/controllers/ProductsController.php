@@ -17,8 +17,6 @@ class ProductsController
 
     public function addProducts()
     {
-        // echo "Add product..  ";
-        // echo $_POST['name'],$_POST['code'],$_POST['rate'];
         App::get('database')->insertData('product',[
             'pro_name' => $_POST['name'],
             'pro_code' => $_POST['code'],
@@ -34,13 +32,10 @@ class ProductsController
     public function updateProduct()
     {
         $result = App::get('database')->selectId('product',$_POST['id']);
-        // var_dump($result);
         return view('product/manage_products', compact('result'));
     }
     public function setProduct()
     {
-        // echo "in set data..   ";
-        // echo $_POST['id'];
         App::get('database')->updateData('product',[
             'pro_name' => $_POST['name'],
             'pro_code' => $_POST['code'],
