@@ -16,13 +16,11 @@ class CustomersController
         return view('customer/customers', compact('result'));
     } 
 
-    //GET
     public function addCustomer()
     {
         return view('customer/manage_customers');
     }
 
-    //POST
     public function addCustom()
     {
         App::get('database')->insertData('user',[
@@ -41,18 +39,13 @@ class CustomersController
 
     public function updateCustomer()
     {
-        // echo "in update customer controller... ";
-        // echo $_POST['id'];
         $result = App::get('database')->selectId('user',$_POST['id']);
-        
-        // die(var_dump($result));
         return view('customer/manage_customers', compact('result'));
     }
 
     public function setCustomer()
     {
         echo "in set data..   ";
-        // echo $_POST['id'];
         App::get('database')->updateData('user',[
             'name' => $_POST['name'],
             'address' => $_POST['address'],
